@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Poem Cam</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Enable full screen web app mode -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <!-- Control status bar appearance (optional) -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Ensure proper mobile viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+  <!-- Set app title for home screen -->
+  <meta name="apple-mobile-web-app-title" content="poem cam"">
+</head>
+<body>
+<div class="app">
+  <header>poem cam</header>
+
+  <section id="camera">
+    <video id="video" playsinline autoplay muted></video>
+    <div id="flash"></div>
+  </section>
+
+  <div class="controls">
+    <button id="flip" title="Switch camera" aria-label="switch camera">
+      <i data-lucide="refresh-ccw"></i>
+    </button>
+    <button id="shutter" aria-label="take photo"></button>
+  </div>
+
+  <div class="gallery-wrap">
+    <div class="gallery-title">shots</div>
+    <div id="gallery" class="grid"></div>
+    <div id="empty" class="empty">No photos yet — take one!</div>
+    <div class="hint">Tap to view • Long‑press to delete</div>
+  </div>
+</div>
+
+<!-- hidden capture canvas -->
+<canvas id="capture" style="display:none;"></canvas>
+
+<!-- Fullscreen Viewer -->
+<div id="viewer" aria-modal="true" role="dialog">
+  <div class="viewer-inner">
+    <div id="viewerStack"></div>
+    <button id="viewerClose" aria-label="Close">×</button>
+    <button class="viewer-nav prev" aria-label="Previous">‹</button>
+    <button class="viewer-nav next" aria-label="Next">›</button>
+    <div class="viewer-counter" id="viewerCounter"></div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    lucide.createIcons();
+  });
+</script>
+<script src="app.js"></script>
+</body>
+</html>
